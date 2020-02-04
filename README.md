@@ -1,6 +1,6 @@
 # friendlychat
 
-A new Flutter application.
+Chat application.
 
 ## Getting Started
 
