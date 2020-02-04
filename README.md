@@ -1,6 +1,6 @@
 # friendlychat
 
-Chat application.
+Chat application
 
 ## Getting Started
 
