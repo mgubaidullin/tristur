@@ -4,6 +4,7 @@ import 'package:encrypt/encrypt.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
   runApp(new FriendlychatApp());
@@ -54,6 +55,12 @@ class ContactScreen extends StatelessWidget {
                         child: CircleAvatar(child: Text('$index')),
                       ),
                       title: Text(("rip")),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ChatScreen()),
+                        );
+                      },
                     )
                 ]
             )
@@ -81,7 +88,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin{
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: Colors.blue,
-        title: new Text("Christo Hub"),
+        title: new Text("Contact"),
         elevation: Theme.of(context).platform == TargetPlatform.iOS
             ? 0.0
             : 4.0,
