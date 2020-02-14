@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart';
 
@@ -15,8 +16,8 @@ final ThemeData kIOSTheme = new ThemeData(
 );
 
 final ThemeData kDefaultTheme = new ThemeData(
-  primarySwatch: Colors.grey,
-  accentColor: Colors.orangeAccent[900],
+  primarySwatch: Colors.blue,
+  accentColor: Colors.redAccent[300],
   primaryColorBrightness: Brightness.light,
 );
 
@@ -30,11 +31,37 @@ class FriendlychatApp extends StatelessWidget {
       theme: defaultTargetPlatform == TargetPlatform.iOS         //new
           ? kIOSTheme                                              //new
           : kDefaultTheme,
-      home: new ChatScreen(),
+      home: new ContactScreen(),
     );
   }
 }
 
+class ContactScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+        appBar: new AppBar(
+          backgroundColor: Colors.red,
+          title: new Text("Christo Hub"),
+        ),
+        body: Scrollbar(
+            child: ListView(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                children: [
+                  for (int index = 1; index < 21; index++)
+                    ListTile(
+                      leading: ExcludeSemantics(
+                        child: CircleAvatar(child: Text('$index')),
+                      ),
+                      title: Text(("rip")),
+                    )
+                ]
+            )
+        )
+
+    );
+  }
+}
 class ChatScreen extends StatefulWidget{
   @override
   State createState() => new ChatScreenState();
@@ -52,15 +79,15 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin{
 
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          backgroundColor: Colors.black,
-            title: new Text("Christo Hub", style: TextStyle(color: Colors.orange)),
-            elevation: Theme.of(context).platform == TargetPlatform.iOS
-                ? 0.0
-                : 4.0,
-        ),
+      appBar: new AppBar(
+        backgroundColor: Colors.blue,
+        title: new Text("Christo Hub"),
+        elevation: Theme.of(context).platform == TargetPlatform.iOS
+            ? 0.0
+            : 4.0,
+      ),
 
-        body: Container(
+      body: Container(
           child: new Column(
             children: <Widget>[
               new Flexible(
@@ -74,19 +101,19 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin{
               new Divider(height: 1.0),
               new Container(
                 decoration: new BoxDecoration(
-                  color: Colors.orange[300]),
+                    color: Colors.red[300]),
                 child: _buildTextComposer(),
               ),
             ],
           ),
-            decoration: Theme.of(context).platform == TargetPlatform.iOS //new
-                ? new BoxDecoration(                                     //new
-              border: new Border(                                  //new
-                top: new BorderSide(color: Colors.grey[200]),      //new
-              ),                                                   //new
-            )                                                      //new
-                : null),
-        backgroundColor: Colors.grey[900],
+          decoration: Theme.of(context).platform == TargetPlatform.iOS //new
+              ? new BoxDecoration(                                     //new
+            border: new Border(                                  //new
+              top: new BorderSide(color: Colors.grey[200]),      //new
+            ),                                                   //new
+          )                                                      //new
+              : null),
+      backgroundColor: Colors.grey[900],
     );
   }
 
@@ -96,40 +123,40 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin{
 
   Widget _buildTextComposer() {
     return new IconTheme(data: new IconThemeData(color: Theme.of(context).accentColor),
-        child: new Container(
-          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: new Row(
-            children: <Widget>[
-              new Flexible(
-                child: new TextField(
-                  controller: _textController,
-                  onChanged: (String text) {          //new
-                    setState(() {                     //new
-                      _isComposing = text.length > 0; //new
-                    });                               //new
-                  },
-                  onSubmitted: _handleSubmitted,
-                  cursorColor: Colors.black,
-                  decoration: new InputDecoration.collapsed(hintText: "Send a message"),
-                ),
+      child: new Container(
+        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: new Row(
+          children: <Widget>[
+            new Flexible(
+              child: new TextField(
+                controller: _textController,
+                onChanged: (String text) {          //new
+                  setState(() {                     //new
+                    _isComposing = text.length > 0; //new
+                  });                               //new
+                },
+                onSubmitted: _handleSubmitted,
+                cursorColor: Colors.black,
+                decoration: new InputDecoration.collapsed(hintText: "Send a message"),
               ),
+            ),
 
-              new Container(
-                margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                child: Theme.of(context).platform == TargetPlatform.iOS  //modified
-                ? new CupertinoButton(                                       //new
-                  child: new Text("Send"),                                 //new
-                  onPressed: _isComposing                                  //new
-                      ? () =>  _handleSubmitted(_textController.text)      //new
-                      : null,)
-                : new IconButton(
+            new Container(
+              margin: const EdgeInsets.symmetric(horizontal: 4.0),
+              child: Theme.of(context).platform == TargetPlatform.iOS  //modified
+                  ? new CupertinoButton(                                       //new
+                child: new Text("Send"),                                 //new
+                onPressed: _isComposing                                  //new
+                    ? () =>  _handleSubmitted(_textController.text)      //new
+                    : null,)
+                  : new IconButton(
                   icon: new Icon(Icons.send),
                   onPressed: _isComposing
-                    ? () => _handleSubmitted(_textController.text) : null),
-              ),
-            ],
-          ),
+                      ? () => _handleSubmitted(_textController.text) : null),
+            ),
+          ],
         ),
+      ),
     );
   }
   void _handleSubmitted(String text) {
@@ -160,36 +187,36 @@ class ChatMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new SizeTransition(
-        sizeFactor: new CurvedAnimation(                              //new
-        parent: animationController, curve: Curves.bounceOut),      //new
-    axisAlignment: 0.0,                                           //new
-    child:  new Container(
-      margin: const EdgeInsets.symmetric(vertical: 10.0),
-      child: new Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          new Container(
-            margin: const EdgeInsets.only(right: 16.0),
-            child: new CircleAvatar(child: new Text(_name[0])),
+      sizeFactor: new CurvedAnimation(                              //new
+          parent: animationController, curve: Curves.bounceOut),      //new
+      axisAlignment: 0.0,                                           //new
+      child:  new Container(
+        margin: const EdgeInsets.symmetric(vertical: 10.0),
+        child: new Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            new Container(
+              margin: const EdgeInsets.only(right: 16.0),
+              child: new CircleAvatar(child: new Text(_name[0])),
 
-          ),
-
-          new Expanded(
-            child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                new Text(_name, style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold)),
-                new Container(
-                  margin: const EdgeInsets.only(top: 5.0),
-                  child: new Text(text, style: TextStyle(color: Colors.orange[300])),
-                ),
-              ],
             ),
-          )
-        ],
+
+            new Expanded(
+              child: new Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  new Text(_name, style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+                  new Container(
+                    margin: const EdgeInsets.only(top: 5.0),
+                    child: new Text(text, style: TextStyle(color: Colors.red[300])),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
-    ),
     );
-    
+
   }
 }
