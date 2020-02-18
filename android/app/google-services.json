@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "854520697513",
+    "firebase_url": "https://nsiprojects.firebaseio.com",
+    "project_id": "nsiprojects",
+    "storage_bucket": "nsiprojects.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854520697513:android:e176e1e1f156d61f6a8fb8",
+        "android_client_info": {
+          "package_name": "ca.qc.stanislas.artur.friendlychat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854520697513-l5nk4sbd1bbjbiuomrlrpa8vqompd1qk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJgO7PKmk-MUALBDKMo6zfIcEdKHBqnNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854520697513-l5nk4sbd1bbjbiuomrlrpa8vqompd1qk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
