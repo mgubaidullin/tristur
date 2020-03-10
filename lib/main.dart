@@ -27,6 +27,11 @@ void main() async {
   firestore = Firestore(app: app);
 
   ensureLoggedIn().then((user){
+    Map<String, dynamic> contact = {"name" : user.displayName};
+    print("!!!!!");
+    final CollectionReference ref = firestore.collection("contacts");
+    ref.document(user.email).setData(contact);
+    print("!!!!!");
     runApp(new FriendlychatApp());
   });
 }
