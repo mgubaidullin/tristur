@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -13,55 +14,36 @@ class ContactScreen extends StatelessWidget {
           title: new Text(Main.currentUser.displayName),
         ),
         body: Scrollbar(
-            child: ListView(
-                padding: EdgeInsets.symmetric(vertical: 8),
-                children: [
-                  for (int index = 1; index < 21; index++)
-                    ListTile(
+            child: StreamBuilder<QuerySnapshot>(
+              stream: Firestore.instance.collection("contacts").snapshots(),
+              builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData) return const Text('Loading...');
+                final int userCount = snapshot.data.documents.length;
+                return ListView.builder(
+                  itemCount: userCount,
+                  itemBuilder: (_, int index) {
+                    final DocumentSnapshot document = snapshot.data.documents[index];
+                    final String user = document['name'];
+                    final String email = document.documentID;
+                    return ListTile(
                       leading: ExcludeSemantics(
-                        child: CircleAvatar(child: Text('$index')),
+                        child: CircleAvatar(child: Text(user[0])),
                       ),
-                      title: Text(("rip")),
+                      title: Text(user),
+                      subtitle: Text(email),
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ChatScreen()),
+                          MaterialPageRoute(builder: (context) => ChatScreen(email)),
                         );
                       },
-                    )
-                ]
+                    );
+                  },
+                );
+              },
             )
         )
 
     );
   }
 }
-
-//class MessageList extends StatelessWidget {
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return StreamBuilder<QuerySnapshot>(
-//      stream: Database.getUsersSnapshot(),
-//      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-//        if (!snapshot.hasData) return const Text('Loading...');
-//        final int userCount = snapshot.data.documents.length;
-//        return ListView.builder(
-//          itemCount: userCount,
-//          itemBuilder: (_, int index) {
-//            final DocumentSnapshot document = snapshot.data.documents[index];
-//            final String user = document['name'];
-//            final Timestamp connected = document['connected'];
-//            return ListTile(
-//              leading: Icon(Icons.person),
-//              title: Text(
-//                user != null ? user : '<No data retrieved>',
-//              ),
-//              subtitle: Text("Connected ${connected !=null ? connected.toDate() : ''}"),
-//            );
-//          },
-//        );
-//      },
-//    );
-//  }
-//}

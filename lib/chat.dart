@@ -6,15 +6,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'main.dart' as Main;
 
-class ChatScreen extends StatefulWidget{
+class ChatScreen extends StatefulWidget {
+  String _contact;
+
+  ChatScreen(this._contact);
+
   @override
-  State createState() => new ChatScreenState();
+  State createState() => new ChatScreenState(this._contact);
 
 }
 
 class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin{
-  @override
+  String _contact;
 
+  ChatScreenState(this._contact);
+
+  @override
   void dispose() {                                                   //new
     for (ChatMessage message in _messages)                           //new
       message.animationController.dispose();                         //new
@@ -25,7 +32,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin{
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: Colors.blue,
-        title: new Text("Contact"),
+        title: new Text(_contact ),
         elevation: Theme.of(context).platform == TargetPlatform.iOS
             ? 0.0
             : 4.0,
