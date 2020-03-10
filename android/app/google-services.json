@@ -1,34 +1,71 @@
 {
   "project_info": {
-    "project_number": "854520697513",
-    "firebase_url": "https://nsiprojects.firebaseio.com",
-    "project_id": "nsiprojects",
-    "storage_bucket": "nsiprojects.appspot.com"
+    "project_number": "129700375978",
+    "firebase_url": "https://nsi-demo.firebaseio.com",
+    "project_id": "nsi-demo",
+    "storage_bucket": "nsi-demo.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:854520697513:android:e176e1e1f156d61f6a8fb8",
+        "mobilesdk_app_id": "1:129700375978:android:aba49e7bd352fd18a18fd3",
         "android_client_info": {
           "package_name": "ca.qc.stanislas.artur.friendlychat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "854520697513-l5nk4sbd1bbjbiuomrlrpa8vqompd1qk.apps.googleusercontent.com",
+          "client_id": "129700375978-3bbtql45vahb4bsrnblpu83lsrrupur2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ca.qc.stanislas.artur.friendlychat",
+            "certificate_hash": "12c1ad0871dce11a960720468d715eb79223d2df"
+          }
+        },
+        {
+          "client_id": "129700375978-ikm0lrraob298oc5i2nuoed1lhk24ii8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBJgO7PKmk-MUALBDKMo6zfIcEdKHBqnNA"
+          "current_key": "AIzaSyAFIsq_16tVNi8oFblHgBS5kbcNNonmrsc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "854520697513-l5nk4sbd1bbjbiuomrlrpa8vqompd1qk.apps.googleusercontent.com",
+              "client_id": "129700375978-ikm0lrraob298oc5i2nuoed1lhk24ii8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129700375978:android:377780d06daf3dada18fd3",
+        "android_client_info": {
+          "package_name": "ca.qc.stanislas.nsi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129700375978-ikm0lrraob298oc5i2nuoed1lhk24ii8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFIsq_16tVNi8oFblHgBS5kbcNNonmrsc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "129700375978-ikm0lrraob298oc5i2nuoed1lhk24ii8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
