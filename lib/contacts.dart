@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'chat.dart';
+import 'main.dart' as Main;
 
 class ContactScreen extends StatelessWidget {
   @override
@@ -9,7 +10,7 @@ class ContactScreen extends StatelessWidget {
     return new Scaffold(
         appBar: new AppBar(
           backgroundColor: Colors.red,
-          title: new Text("Christo Hub"),
+          title: new Text(Main.currentUser.displayName),
         ),
         body: Scrollbar(
             child: ListView(
