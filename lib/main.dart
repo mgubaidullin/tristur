@@ -1,5 +1,7 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:encrypt/encrypt.dart';
 
@@ -9,8 +11,21 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'contacts.dart';
 
-void main() {
+Firestore firestore;
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  final FirebaseApp app = await FirebaseApp.configure(
+    name: 'test',
+    options: const FirebaseOptions(
+      googleAppID: '1:854520697513:android:e176e1e1f156d61f6a8fb8',
+      apiKey: 'AIzaSyBJgO7PKmk-MUALBDKMo6zfIcEdKHBqnNA',
+      projectID: 'nsiprojects.appspot.com',
+    ),
+  );
+  firestore = Firestore(app: app);
+
   ensureLoggedIn().then((user){
     runApp(new FriendlychatApp());
   });
@@ -27,8 +42,6 @@ final ThemeData kDefaultTheme = new ThemeData(
   accentColor: Colors.redAccent[300],
   primaryColorBrightness: Brightness.light,
 );
-
-const String name = "Arturito";
 
 class FriendlychatApp extends StatelessWidget {
   @override

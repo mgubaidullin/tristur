@@ -141,7 +141,7 @@ class ChatMessage extends StatelessWidget {
           children: <Widget>[
             new Container(
               margin: const EdgeInsets.only(right: 16.0),
-              child: new CircleAvatar(child: new Text(Main.name[0])),
+              child: new CircleAvatar(child: new Text(Main.currentUser.displayName[0])),
 
             ),
 
@@ -149,7 +149,7 @@ class ChatMessage extends StatelessWidget {
               child: new Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  new Text(Main.name, style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+                  new Text(Main.currentUser.displayName, style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
                   new Container(
                     margin: const EdgeInsets.only(top: 5.0),
                     child: new Text(text, style: TextStyle(color: Colors.red[300])),
