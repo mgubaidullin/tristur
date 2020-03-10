@@ -6,23 +6,21 @@ import 'package:friendlychat/service/database.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // prepare database
   Database.prepare();
   // login
   Login.ensureLoggedIn().then((user) {
     Database.updateUser(user.email, user.displayName);
-    runApp(ChatApp(user));
+    runApp(ChatApp());
   });
 }
 
 class ChatApp extends StatelessWidget {
-  FirebaseUser _currentUser;
-
-  ChatApp(this._currentUser);
 
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new UsersScreen(_currentUser),
+      home: new UsersScreen(),
     );
   }
 }

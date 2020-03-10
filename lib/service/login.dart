@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 final _auth = FirebaseAuth.instance;
+FirebaseUser currentUser;
 
 GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: <String>['email'],
@@ -33,7 +34,7 @@ Future<FirebaseUser> ensureLoggedIn() async {
   assert(!user.isAnonymous);
   assert(await user.getIdToken() != null);
 
-  final FirebaseUser currentUser = await _auth.currentUser();
+  currentUser = await _auth.currentUser();
   return currentUser;
 }
 

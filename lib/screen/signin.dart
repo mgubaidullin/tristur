@@ -47,7 +47,7 @@ class SignInScreenState extends State<SignInScreen> {
       RaisedButton(child: const Text('SIGN IN'), onPressed: _handleSignIn),
     ];
     if (_currentUser != null) {
-      return new UsersScreen(_currentUser);
+      return new UsersScreen();
     } else {
       return new Scaffold(
           body: new ConstrainedBox(
